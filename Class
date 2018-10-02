@@ -1,29 +1,34 @@
-#Grabbing Column Data#
+#10/2/2018
 # Default display code
 class Dataset:
     def __init__(self, data):
         self.header = data[0]
         self.data = data[1:]
-       
-    # Add your method here.
+    
+    # Add the special method here
+    def __str__(self):
+        return str(self.data[:10])
+    
     def column(self, label):
         if label not in self.header:
             return None
         
         index = 0
-        result = list()
-        for idx, value in enumerate( self.header,1):
-            if value ==label:
-                index = idx-1
-        for i in self.data:
-             result.append(i[index])
-        return result
+        for idx, element in enumerate(self.header):
+            if label == element:
+                index = idx
+        
+        column = []
+        for row in self.data:
+            column.append(row[index])
+        return column
     
+        
+    def count_unique(self, label):
+        unique_results = set(self.column(label))
+        count = len(unique_results)
+        return count
 
-nfl_dataset = Dataset(nfl_data)
-
-year_column = nfl_dataset.column("year" )
-player_column = nfl_dataset.column("player")
 
 
 #this two statement return the same result in the console, is console transfrom the result to string and output?
