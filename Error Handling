@@ -1,0 +1,28 @@
+#To handle our error and allow our code to run, use a try/except block:
+
+try:
+    int('')
+except Exception:
+    print("There was an error")
+
+#To add an exception instance:
+
+try:
+    int('')
+except Exception as exc:
+    print(type(exc))
+
+#To convert the Exception class to a string and print out the error message:
+
+try:
+    int('')
+except Exception as exc:
+    print(str(exc))
+
+#USING THE PASS KEYWORD
+#When we don't want anything in the except statement body, we can use pass:
+
+try:
+    int('')
+except Exception:
+    pass
